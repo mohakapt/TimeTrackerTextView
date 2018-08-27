@@ -1,16 +1,21 @@
 package com.github.mohaka.timeTrackerTextView;
 
-import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 
 /**
  * Created by MoHaKa on 2/7/17.
  */
 class Utilities {
-    private Context context;
 
-    static Utilities with(Context context) {
-        Utilities reVal = new Utilities();
-        reVal.context = context;
-        return reVal;
+    /**
+     * Execute the given {@link Runnable} on the ui thread.
+     *
+     * @param runnable The runnable to execute.
+     */
+    public static void runOnUiThread(Runnable runnable) {
+        Thread uiThread = Looper.getMainLooper().getThread();
+        if (Thread.currentThread() != uiThread) new Handler(Looper.getMainLooper()).post(runnable);
+        else runnable.run();
     }
 }
