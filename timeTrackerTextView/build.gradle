@@ -2,6 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
 ext {
     bintrayRepo = 'maven'
     bintrayName = 'time-tracker-text-view'
@@ -22,7 +28,7 @@ ext {
     developerEmail = 'mohakapt@gmail.com'
 
     licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    licenseUrl = 'https://raw.githubusercontent.com/mohakapt/TimeTrackerTextView/master/LICENSE'
     allLicenses = ["Apache-2.0"]
 }
 
