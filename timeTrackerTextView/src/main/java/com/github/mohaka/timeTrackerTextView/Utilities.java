@@ -1,4 +1,4 @@
-package com.github.mohaka.timeTrackableTextView;
+package com.github.mohaka.timeTrackerTextView;
 
 import android.content.Context;
 

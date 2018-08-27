@@ -1,4 +1,4 @@
-package com.github.mohaka.timeTrackableTextView.example;
+package com.github.mohaka.timeTrackerTextView.example;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

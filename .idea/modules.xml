@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TimeTrackableTextView.iml" filepath="$PROJECT_DIR$/TimeTrackableTextView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TimeTrackerTextView.iml" filepath="$PROJECT_DIR$/TimeTrackerTextView.iml" />
       <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
-      <module fileurl="file://$PROJECT_DIR$/timeTrackableTextView/timeTrackableTextView.iml" filepath="$PROJECT_DIR$/timeTrackableTextView/timeTrackableTextView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/timeTrackerTextView/timeTrackerTextView.iml" filepath="$PROJECT_DIR$/timeTrackerTextView/timeTrackerTextView.iml" />
     </modules>
   </component>
 </project>
