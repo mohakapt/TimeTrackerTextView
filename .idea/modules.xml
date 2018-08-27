@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TimeTrackableTextView.iml" filepath="$PROJECT_DIR$/TimeTrackableTextView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/timeTrackableTextView/timeTrackableTextView.iml" filepath="$PROJECT_DIR$/timeTrackableTextView/timeTrackableTextView.iml" />
+    </modules>
+  </component>
+</project>
