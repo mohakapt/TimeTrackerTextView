@@ -10,7 +10,7 @@ ext {
     libraryName = 'TimeTrackerTextView'
     artifact = 'time-tracker-text-view'
 
-    libraryDescription = 'A nice looking new concept for rating bars implemented in Android.'
+    libraryDescription = 'A (Time-Dependent) TextView that tracks time and updates its content accordingly.'
 
     siteUrl = 'https://github.com/mohakapt/TimeTrackerTextView'
     gitUrl = 'https://github.com/mohakapt/TimeTrackerTextView.git'
