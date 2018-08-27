@@ -1,5 +1,6 @@
 package com.github.mohaka.timeTrackerTextView;
 
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -17,5 +18,9 @@ class Utilities {
         Thread uiThread = Looper.getMainLooper().getThread();
         if (Thread.currentThread() != uiThread) new Handler(Looper.getMainLooper()).post(runnable);
         else runnable.run();
+    }
+
+    public static boolean hasKitKat() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
     }
 }
