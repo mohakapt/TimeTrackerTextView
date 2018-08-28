@@ -169,10 +169,10 @@ public class TimeTrackerTextView extends AppCompatTextView {
     }
 
     private static class TimerUpdater extends TimerTask {
-        private WeakReference<AppCompatTextView> textView;
+        private WeakReference<TimeTrackerTextView> textView;
         private TimeTracker timeTracker;
 
-        private TimerUpdater(AppCompatTextView textView, TimeTracker timeTracker) {
+        private TimerUpdater(TimeTrackerTextView textView, TimeTracker timeTracker) {
             this.textView = new WeakReference<>(textView);
             this.timeTracker = timeTracker;
         }
@@ -185,9 +185,12 @@ public class TimeTrackerTextView extends AppCompatTextView {
         private Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                AppCompatTextView textView = TimerUpdater.this.textView.get();
+                TimeTrackerTextView textView = TimerUpdater.this.textView.get();
                 if (textView == null) return;
-                timeTracker.onUpdate(textView);
+                boolean reschedule = timeTracker.onUpdate(textView);
+
+                if (!reschedule)
+                    textView.timeTrackers.get(timeTracker).cancel();
             }
         };
     }

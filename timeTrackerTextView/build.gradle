@@ -52,7 +52,7 @@ android {
 
 dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    api 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+    compileOnly 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
 }
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'

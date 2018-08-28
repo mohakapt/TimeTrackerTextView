@@ -17,7 +17,9 @@ I find it rather frustrating to implement a time-dependent TextView (A TextView 
 Add This dependency to your module-level gradle file:
 ```groovy
 dependencies {
-    implementation 'com.github.mohaka:time-tracker-text-view:0.1.0'
+    // You can find the latest version of the library here:
+    // https://github.com/mohakapt/TimeTrackerTextView/releases 
+    implementation 'com.github.mohaka:time-tracker-text-view:{LATEST_VERSION}'
     
     // Add this dependency only if you want to use my PrettyTimeTracker
     // implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'

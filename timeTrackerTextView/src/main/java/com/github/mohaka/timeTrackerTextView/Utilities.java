@@ -23,4 +23,12 @@ class Utilities {
     public static boolean hasKitKat() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
     }
+
+    public static <T> boolean isEmpty(final T[] a) {
+        return a == null || a.length == 0;
+    }
+
+    public static boolean isEmpty(final int[] a) {
+        return a == null || a.length == 0;
+    }
 }
