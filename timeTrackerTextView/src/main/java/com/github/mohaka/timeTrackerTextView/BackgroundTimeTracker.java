@@ -4,27 +4,21 @@ import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 import static com.github.mohaka.timeTrackerTextView.Utilities.isEmpty;
 
 public class BackgroundTimeTracker extends TimeTracker {
     private Date trackingDate;
     private int[] durationArray;
-    private int[] backgroundArray;
 
-    private long interval;
+    private int[] backgroundResIdArray;
+    private int[] tintColorArray;
 
-    public BackgroundTimeTracker(Date trackingDate, int[] durationArray, int[] backgroundArray) {
-        this(trackingDate, durationArray, backgroundArray, TimeUnit.SECONDS.toMillis(1));
-    }
+    private boolean gradual;
 
-    public BackgroundTimeTracker(Date trackingDate, int[] durationArray, int[] backgroundArray, long interval) {
+    public BackgroundTimeTracker(Date trackingDate, int[] durations) {
         setTrackingDate(trackingDate);
-        this.durationArray = durationArray;
-        this.backgroundArray = backgroundArray;
-
-        this.interval = interval;
+        this.durationArray = durations;
     }
 
     /**
@@ -46,13 +40,6 @@ public class BackgroundTimeTracker extends TimeTracker {
         this.trackingDate = trackingDate;
     }
 
-    public int[] getDurationArray() {
-        return durationArray;
-    }
-
-    public int[] getBackgroundArray() {
-        return backgroundArray;
-    }
 
     @Override
     boolean onUpdate(AppCompatTextView textView) {
@@ -60,16 +47,31 @@ public class BackgroundTimeTracker extends TimeTracker {
 
         Date referenceDate = getReferenceDate(true);
         Date trackingDate = getTrackingDate();
-
-        if (isEmpty(durationArray) || isEmpty(backgroundArray)) return false;
         if (trackingDate == null) return false;
+        if (isEmpty(durationArray)) return false;
 
-        long difference = referenceDate.getTime() - trackingDate.getTime();
+        boolean hasTints = !isEmpty(tintColorResIdArray) || !isEmpty(tintColorArray);
+        boolean hasBackgrounds = !isEmpty(backgroundResIdArray) || !isEmpty(backgroundArray);
+        if (!hasTints && !hasBackgrounds) return false;
+
+        if (hasTints) {
+            if (!isEmpty(backgroundArray))
+                textView.setBackgroundDrawable(backgroundArray[0]);
+            else
+                textView.setBackgroundResource(backgroundResIdArray[0]);
+        }
+
         int background = 0;
         boolean result = false;
 
+        long difference = referenceDate.getTime() - trackingDate.getTime();
+
         for (int i = 0; i < durationArray.length; i++) {
-            if (difference < durationArray[i] && backgroundArray.length > i) {
+            if (difference < durationArray[i]) {
+
+                backgroundArray.length > i
+
+
                 background = backgroundArray[i];
                 result = true;
                 break;
@@ -86,6 +88,14 @@ public class BackgroundTimeTracker extends TimeTracker {
 
     @Override
     long getInterval() {
-        return interval;
+        boolean hasTints = !isEmpty(tintColorResIdArray) || !isEmpty(tintColorArray);
+
+        if (gradual && hasTints)
+            return 200;
+
+        if (!isEmpty(durationArray))
+            return durationArray[0] / 2;
+
+        return 1000;
     }
 }
